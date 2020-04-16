@@ -1,4 +1,4 @@
-# Razorpay Node SDK
+# Razorpay TypeScript SDK
 
 [![npm](https://img.shields.io/npm/v/razorpay-typescript.svg?maxAge=2592000?style=flat-square)](https://www.npmjs.com/package/razorpay-typescript)
 [![Build Status](https://travis-ci.org/knoxpo/razorpay-typescript.svg?branch=master)](https://travis-ci.org/knoxpo/razorpay-typescript)
