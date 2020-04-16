@@ -1,0 +1,2 @@
+export { Razorpay, IRazorQuery, IRazorSubscriptionQuery, IRazorOrderQuery, IRazorPaymentQuery, IRazorSettlementQuery, IRazorRouteQuery, IRazorpayConfig, IRazorpayAuthKey, RazorSubscriptions, RazorPlans, RazorCustomers, RazorOrders, RazorPayments, RazorPayment, RazorSettlements, RazorRefunds, RazorRoutes, RazorVirtualAccounts, } from './razorpay';
+//# sourceMappingURL=index.d.ts.map

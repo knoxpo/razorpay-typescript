@@ -98,7 +98,7 @@ export class RazorAPI {
         }
     }
 
-    private getValidHeaders(headers: any) {
+    private getValidHeaders(headers: IMap<string>) {
         const result: IMap<any> = {};
         if (!isNonNullObject(headers)) {
             return result;

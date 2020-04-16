@@ -19,31 +19,6 @@ export interface IRazorRefundId extends IRazorRefund {
     status: 'pending' | 'processed';
     created_at: number;
 }
-export interface IRazorRefundRecon {
-    entity_id: string;
-    type: string;
-    debit: number;
-    credit: number;
-    amount: number;
-    currency: string;
-    fees: number;
-    tax: number;
-    on_hold: boolean;
-    settled: boolean;
-    created_at: number;
-    settled_at: number;
-    refund_id: string;
-    description: string;
-    payment_id: string;
-    refund_utr: string;
-    order_id: string;
-    order_receipt: string;
-    method: 'card' | 'netbanking' | 'wallet' | 'emi' | 'upi';
-    card_network: 'American Express' | 'Diners Club' | 'Maestro' | 'MasterCard' | 'RuPay' | 'Visa';
-    card_issuer: string;
-    card_type: 'credit' | 'debit';
-    dispute_id: string;
-}
 export interface CIRazorRefunds {
     fetchAll(query?: IRazorQuery): Promise<{
         entity: string;

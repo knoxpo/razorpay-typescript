@@ -8,6 +8,7 @@ import { RazorSettlements } from './resources/settlements';
 import { RazorRefunds } from './resources/refunds';
 import { RazorRoutes } from './resources/routes';
 import { RazorVirtualAccounts } from './resources/virtual-accounts';
+import { IMap } from './helper';
 const pkg = require('../package.json');
 // const cors = require('cors')({ origin: true });
 // const request = require("request");
@@ -19,8 +20,7 @@ interface IRazorpayAuthKey {
 
 interface IRazorpayConfig {
     authKey: IRazorpayAuthKey;
-    headers?: any;
-    image?: string;
+    headers?: IMap<string>;
 }
 
 interface IRazorQuery {

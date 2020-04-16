@@ -8,14 +8,14 @@ import { RazorSettlements } from './resources/settlements';
 import { RazorRefunds } from './resources/refunds';
 import { RazorRoutes } from './resources/routes';
 import { RazorVirtualAccounts } from './resources/virtual-accounts';
+import { IMap } from './helper';
 interface IRazorpayAuthKey {
     key_id: string;
     key_secret: string;
 }
 interface IRazorpayConfig {
     authKey: IRazorpayAuthKey;
-    headers?: any;
-    image?: string;
+    headers?: IMap<string>;
 }
 interface IRazorQuery {
     from?: number;
