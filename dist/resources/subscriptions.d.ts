@@ -172,4 +172,3 @@ export declare class RazorSubscriptions extends RazorResourceInterface implement
     */
     deleteAddon(addOnId: string): Promise<IRazorSubscriptionAddOnId>;
 }
-//# sourceMappingURL=subscriptions.d.ts.map

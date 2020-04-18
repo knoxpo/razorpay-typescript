@@ -5,7 +5,7 @@ const razorConfig = {
         key_id: process.env.KEY_ID, // your `KEY_ID`
         key_secret: process.env.KEY_SECRET // your `KEY_SECRET`
     },
-    headers: []
+    headers: {}
 };
 const rzp = new Razorpay(razorConfig);
 
@@ -124,8 +124,8 @@ rzp.orders.fetchAll({
 
 // Fetch all transfers
 rzp.routes.fetchAll({
-    from: 'Aug 25, 2016',
-    to: 'Dec 30, 2016',
+    from: (new Date('Aug 25, 2016')).getTime(),
+    to: (new Date('Dec 30, 2016')).getTime(),
     count: 25
 }).then((data) => {
     console.log(data)
@@ -135,8 +135,8 @@ rzp.routes.fetchAll({
 
 // Fetch all transfers made on a specific payment
 rzp.routes.fetchAll({
-    from: 'Aug 25, 2016',
-    to: 'Dec 30, 2016',
+    from: (new Date('Aug 25, 2016')).getTime(),
+    to: (new Date('Dec 30, 2016')).getTime(),
     count: 25,
     payment_id: 'pay_6CnVGA5eq4D7Ce'
 }).then((data) => {

@@ -86,4 +86,3 @@ export declare class RazorRoutes extends RazorResourceInterface implements CIRaz
     */
     edit(transferId: string, notes: IMap<string>): Promise<IRazorTransferId>;
 }
-//# sourceMappingURL=routes.d.ts.map

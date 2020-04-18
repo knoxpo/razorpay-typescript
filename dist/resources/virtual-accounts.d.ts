@@ -143,4 +143,3 @@ export declare class RazorVirtualAccounts extends RazorResourceInterface impleme
     */
     close(virtualAccountId: string): Promise<IRazorVirtualAccountId>;
 }
-//# sourceMappingURL=virtual-accounts.d.ts.map

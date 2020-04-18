@@ -11,4 +11,3 @@ export declare const normalizeNotes: (notes?: IMap<any>) => IMap<any>;
 export declare const prettify: (val: IMap<any>) => string;
 export declare const getTestError: (summary: string, expectedVal: any, gotVal: any) => Error;
 export declare const validateWebhookSignature: (body: string, signature: string, secret: string) => boolean;
-//# sourceMappingURL=helper.d.ts.map

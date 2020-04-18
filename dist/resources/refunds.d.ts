@@ -60,4 +60,3 @@ export declare class RazorRefunds extends RazorResourceInterface implements CIRa
     */
     edit(refundId: string, notes: IMap<string>): Promise<IRazorRefundId>;
 }
-//# sourceMappingURL=refunds.d.ts.map

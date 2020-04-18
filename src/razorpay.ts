@@ -10,8 +10,6 @@ import { RazorRoutes } from './resources/routes';
 import { RazorVirtualAccounts } from './resources/virtual-accounts';
 import { IMap } from './helper';
 const pkg = require('../package.json');
-// const cors = require('cors')({ origin: true });
-// const request = require("request");
 
 interface IRazorpayAuthKey {
     key_id: string;

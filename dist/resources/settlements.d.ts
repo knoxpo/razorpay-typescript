@@ -86,4 +86,3 @@ export declare class RazorSettlements extends RazorResourceInterface implements 
         items: IRazorSettlementRecon[];
     }>;
 }
-//# sourceMappingURL=settlements.d.ts.map

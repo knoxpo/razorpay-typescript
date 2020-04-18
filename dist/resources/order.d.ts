@@ -69,4 +69,3 @@ export declare class RazorOrders extends RazorResourceInterface implements CIRaz
     */
     edit(orderId: string, notes: IMap<string>): Promise<IRazorOrderId>;
 }
-//# sourceMappingURL=order.d.ts.map

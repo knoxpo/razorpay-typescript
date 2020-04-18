@@ -55,4 +55,3 @@ export declare class RazorPlans extends RazorResourceInterface implements CIRazo
     */
     fetch(planId: string): Promise<IRazorPlanId>;
 }
-//# sourceMappingURL=plans.d.ts.map

@@ -20,6 +20,9 @@ class RazorCustomers extends interface_1.RazorResourceInterface {
     get instance() {
         return new RazorCustomers(this.services);
     }
+    customer(customerId) {
+        return new RazorCustomer(this.services, customerId);
+    }
     create(params) {
         const { notes } = params, rest = __rest(params, ["notes"]);
         const data = Object.assign(rest, helper_1.normalizeNotes(notes));
@@ -41,47 +44,100 @@ class RazorCustomers extends interface_1.RazorResourceInterface {
             url: `${this.resourceUrl}/${customerId}`,
         });
     }
-    edit(customerId, params) {
+}
+exports.RazorCustomers = RazorCustomers;
+class RazorCustomer extends interface_1.RazorResourceInterface {
+    constructor(razor, customerId) {
+        super(razor, '/payments');
         if (!customerId) {
-            return Promise.reject(this.MISSING_ID_ERROR);
+            throw this.FIELD_MANDATORY_ERROR('Payment ID');
         }
-        const { notes } = params, rest = __rest(params, ["notes"]);
-        const data = Object.assign(rest, helper_1.normalizeNotes(notes));
-        return this.api.put({
-            url: `${this.resourceUrl}/${customerId}`,
+        this._customerId = customerId;
+    }
+    /**
+    * Creates a Address
+    *
+    * @param {Object} params
+    *
+    *
+    * @return {Promise}
+    */
+    createAddress(params) {
+        const data = params;
+        data.primary = true;
+        return this.api.post({
+            url: `${this.resourceUrl}/${this._customerId}/addresses`,
             data
         });
     }
-    fetchTokens(customerId) {
-        if (!customerId) {
-            return Promise.reject(this.MISSING_ID_ERROR);
-        }
+    /**
+    * Fetch all Addresses
+    *
+    * @param {Object} params
+    *
+    *
+    * @return {Promise}
+    */
+    fetchAllAddresses() {
         return this.api.get({
-            url: `${this.resourceUrl}/${customerId}/tokens`,
+            url: `${this.resourceUrl}/${this._customerId}/addresses`
         });
     }
-    fetchToken(customerId, tokenId) {
-        if (!customerId) {
-            return Promise.reject(this.MISSING_ID_ERROR);
-        }
+    /**
+    * Get a Address
+    *
+    * @param {String} addressId
+    *
+    *
+    * @return {Promise}
+    */
+    fetchAddress(addressId) {
+        return this.api.get({
+            url: `${this.resourceUrl}/${this._customerId}/addresses/${addressId}`
+        });
+    }
+    /**
+    * Delete a Address
+    *
+    * @param {String} addressId
+    *
+    *
+    * @return {Promise}
+    */
+    deleteAddress(addressId) {
+        return this.api.delete({
+            url: `${this.resourceUrl}/${this._customerId}/addresses/${addressId}`
+        });
+    }
+    edit(params) {
+        const { notes } = params, rest = __rest(params, ["notes"]);
+        const data = Object.assign(rest, helper_1.normalizeNotes(notes));
+        return this.api.put({
+            url: `${this.resourceUrl}/${this._customerId}`,
+            data
+        });
+    }
+    fetchAllTokens() {
+        return this.api.get({
+            url: `${this.resourceUrl}/${this._customerId}/tokens`,
+        });
+    }
+    fetchToken(tokenId) {
         if (!tokenId) {
             return Promise.reject(this.FIELD_MANDATORY_ERROR('Token ID'));
         }
         return this.api.get({
-            url: `${this.resourceUrl}/${customerId}/tokens/${tokenId}`,
+            url: `${this.resourceUrl}/${this._customerId}/tokens/${tokenId}`,
         });
     }
-    deleteToken(customerId, tokenId) {
-        if (!customerId) {
-            return Promise.reject(this.MISSING_ID_ERROR);
-        }
+    deleteToken(tokenId) {
         if (!tokenId) {
             return Promise.reject(this.FIELD_MANDATORY_ERROR('Token ID'));
         }
         return this.api.delete({
-            url: `${this.resourceUrl}/${customerId}/tokens/${tokenId}`,
+            url: `${this.resourceUrl}/${this._customerId}/tokens/${tokenId}`,
         });
     }
 }
-exports.RazorCustomers = RazorCustomers;
+exports.RazorCustomer = RazorCustomer;
 //# sourceMappingURL=customers.js.map

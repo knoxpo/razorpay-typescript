@@ -11,4 +11,3 @@ export declare class RazorResourceInterface {
     protected FIELD_MANDATORY_ERROR(field: string): string;
     get services(): Razorpay;
 }
-//# sourceMappingURL=interface.d.ts.map

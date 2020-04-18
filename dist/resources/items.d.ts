@@ -69,4 +69,3 @@ export declare class RazorItems extends RazorResourceInterface implements CIRazo
     */
     delete(itemId: string): Promise<[]>;
 }
-//# sourceMappingURL=items.d.ts.map

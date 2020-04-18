@@ -16,18 +16,30 @@ export interface IRazorCustomerId extends IRazorCustomer {
     gstin: string;
 }
 
+export interface IRazorAddress {
+    type: "billing_address" | "shipping_address";
+    line1: string;
+    line2?: string;
+    zipcode: string;
+    city: string;
+    state?: string;
+    country: string;
+    primary?: boolean;
+}
+
+export interface IRazorAddressId extends IRazorAddress {
+    id: string;
+}
+
 export interface CIRazorCustomers {
+    customer(customerId: string): RazorCustomer;
     create(params: IRazorCustomer): Promise<IRazorCustomerId>;
-    edit(customerId: string, params: IRazorCustomer): Promise<any>;
     fetchAll(): Promise<{
         entity: string;
         count: number;
         items: IRazorCustomerId[];
     }>;
     fetch(customerId: string): Promise<IRazorCustomerId>;
-    fetchTokens(customerId: string): Promise<any>;
-    fetchToken(customerId: string, tokenId: string): Promise<any>;
-    deleteToken(customerId: string, tokenId: string): Promise<any>;
 }
 
 export class RazorCustomers extends RazorResourceInterface implements CIRazorCustomers {
@@ -38,6 +50,10 @@ export class RazorCustomers extends RazorResourceInterface implements CIRazorCus
 
     get instance(): RazorCustomers {
         return new RazorCustomers(this.services);
+    }
+
+    customer(customerId: string): RazorCustomer {
+        return new RazorCustomer(this.services, customerId);
     }
 
     create(params: IRazorCustomer): Promise<IRazorCustomerId> {
@@ -63,50 +79,125 @@ export class RazorCustomers extends RazorResourceInterface implements CIRazorCus
             url: `${this.resourceUrl}/${customerId}`,
         });
     }
+}
 
-    edit(customerId: string, params: IRazorCustomer): Promise<any> {
+export interface CIRazorCustomer {
+    createAddress(params: IRazorAddress): Promise<IRazorAddressId>;
+    fetchAddress(addressId: string): Promise<IRazorAddressId>;
+    fetchAllAddresses(): Promise<{
+        entity: string;
+        count: number;
+        items: IRazorAddressId[];
+    }>;
+    deleteAddress(addressId: string): Promise<any>;
+    edit(params: IRazorCustomer): Promise<IRazorAddressId>;
+    fetchAllTokens(): Promise<any>;
+    fetchToken(tokenId: string): Promise<any>;
+    deleteToken(tokenId: string): Promise<any>;
+}
+
+export class RazorCustomer extends RazorResourceInterface implements CIRazorCustomer {
+
+    private _customerId: string;
+
+    constructor(razor: Razorpay, customerId: string) {
+        super(razor, '/payments');
         if (!customerId) {
-            return Promise.reject(this.MISSING_ID_ERROR);
+            throw this.FIELD_MANDATORY_ERROR('Payment ID');
         }
-        const { notes, ...rest } = params;
-        const data = Object.assign(rest, normalizeNotes(notes));
-        return this.api.put({
-            url: `${this.resourceUrl}/${customerId}`,
+        this._customerId = customerId;
+    }
+
+    /**
+    * Creates a Address
+    *
+    * @param {Object} params
+    * 
+    *
+    * @return {Promise}
+    */
+    createAddress(params: IRazorAddress): Promise<IRazorAddressId> {
+        const data = params;
+        data.primary = true;
+
+        return this.api.post({
+            url: `${this.resourceUrl}/${this._customerId}/addresses`,
             data
         });
     }
 
-    fetchTokens(customerId: string): Promise<any> {
-        if (!customerId) {
-            return Promise.reject(this.MISSING_ID_ERROR);
-        }
+    /**
+    * Fetch all Addresses
+    *
+    * @param {Object} params
+    * 
+    *
+    * @return {Promise}
+    */
+    fetchAllAddresses(): Promise<{ entity: string; count: number; items: IRazorAddressId[]; }> {
         return this.api.get({
-            url: `${this.resourceUrl}/${customerId}/tokens`,
+            url: `${this.resourceUrl}/${this._customerId}/addresses`
         });
     }
-    
-    fetchToken(customerId: string, tokenId: string): Promise<any> {
-        if (!customerId) {
-            return Promise.reject(this.MISSING_ID_ERROR);
-        }
+
+    /**
+    * Get a Address
+    *
+    * @param {String} addressId
+    * 
+    *
+    * @return {Promise}
+    */
+    fetchAddress(addressId: string): Promise<IRazorAddressId> {
+        return this.api.get({
+            url: `${this.resourceUrl}/${this._customerId}/addresses/${addressId}`
+        });
+    }
+
+    /**
+    * Delete a Address
+    *
+    * @param {String} addressId
+    * 
+    *
+    * @return {Promise}
+    */
+    deleteAddress(addressId: string): Promise<IRazorAddressId> {
+        return this.api.delete({
+            url: `${this.resourceUrl}/${this._customerId}/addresses/${addressId}`
+        });
+    }
+
+    edit(params: IRazorCustomer): Promise<any> {
+        const { notes, ...rest } = params;
+        const data = Object.assign(rest, normalizeNotes(notes));
+        return this.api.put({
+            url: `${this.resourceUrl}/${this._customerId}`,
+            data
+        });
+    }
+
+    fetchAllTokens(): Promise<any> {
+        return this.api.get({
+            url: `${this.resourceUrl}/${this._customerId}/tokens`,
+        });
+    }
+
+    fetchToken(tokenId: string): Promise<any> {
         if (!tokenId) {
             return Promise.reject(this.FIELD_MANDATORY_ERROR('Token ID'));
         }
         return this.api.get({
-            url: `${this.resourceUrl}/${customerId}/tokens/${tokenId}`,
+            url: `${this.resourceUrl}/${this._customerId}/tokens/${tokenId}`,
         });
     }
-    
-    deleteToken(customerId: string, tokenId: string): Promise<any> {
-        if (!customerId) {
-            return Promise.reject(this.MISSING_ID_ERROR);
-        }
+
+    deleteToken(tokenId: string): Promise<any> {
         if (!tokenId) {
             return Promise.reject(this.FIELD_MANDATORY_ERROR('Token ID'));
         }
         return this.api.delete({
-            url: `${this.resourceUrl}/${customerId}/tokens/${tokenId}`,
+            url: `${this.resourceUrl}/${this._customerId}/tokens/${tokenId}`,
         });
     }
-
 }

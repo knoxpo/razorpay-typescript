@@ -60,4 +60,3 @@ declare class Razorpay {
     get virtualAccounts(): RazorVirtualAccounts;
 }
 export { Razorpay, IRazorQuery, IRazorSubscriptionQuery, IRazorOrderQuery, IRazorPaymentQuery, IRazorSettlementQuery, IRazorRouteQuery, IRazorpayConfig, IRazorpayAuthKey, RazorSubscriptions, RazorPlans, RazorCustomers, RazorOrders, RazorPayments, RazorPayment, RazorSettlements, RazorRefunds, RazorRoutes, RazorVirtualAccounts, };
-//# sourceMappingURL=razorpay.d.ts.map

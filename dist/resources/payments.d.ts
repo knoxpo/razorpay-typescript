@@ -222,4 +222,3 @@ export declare class RazorPayment extends RazorResourceInterface implements CIRa
     */
     upiTransfer(): Promise<IRazorUpiTransferId>;
 }
-//# sourceMappingURL=payments.d.ts.map

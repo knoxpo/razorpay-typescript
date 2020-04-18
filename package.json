@@ -1,29 +1,36 @@
 {
     "name": "razorpay-typescript",
-    "version": "1.0.1",
+    "version": "1.0.3",
     "description": "Unofficial TypeScript based Node.js SDK for Razorpay API.",
     "main": "dist/razorpay",
-    "typings": "src/razorpay",
+    "typings": "dist/razorpay",
     "scripts": {
         "lint": "tslint --project tsconfig.json",
         "build": "tsc",
         "serve": "npm run build"
     },
-    "authors": ["Nayan Hathiwala <nayan@knoxpo.com>"],
+    "authors": [
+        "Nayan Hathiwala <nayan@knoxpo.com>"
+    ],
     "license": "MIT",
     "keywords": [
         "razorpay",
         "payments",
         "node",
         "nodejs",
-        "razorpay-node"
+        "typescript",
+        "razorpay-node",
+        "razorpay-nodejs",
+        "razorpay-typescript"
     ],
     "files": [
         "dist"
     ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/knoxpo/razorpay-typescript.git"
+    },
     "dependencies": {
-        "cors": "^2.8.5",
-        "crypto-js": "^4.0.0",
         "request": "^2.88.2",
         "request-promise": "^4.2.5"
     },

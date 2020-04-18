@@ -6,9 +6,9 @@
     "outDir": "dist",
     "sourceMap": true,
     "strict": true,
-    "declarationMap": true,
+    "declarationMap": false,
     "declaration": true,
-    "target": "es2017"
+    "target": "es2015"
   },
   "compileOnSave": true,
   "include": [

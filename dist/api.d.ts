@@ -18,4 +18,3 @@ export declare class RazorAPI {
     private getValidHeaders;
     private normalizeError;
 }
-//# sourceMappingURL=api.d.ts.map
