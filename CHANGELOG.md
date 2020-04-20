@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.4 - 2020-04-21
+  - [Bug] Corrected resourceUrl in `RazorCustomer`
+
 ## 1.0.3 - 2020-04-18
   - Improved customer interface
   - Added undocumented Razorpay customer's address api to the SDK.

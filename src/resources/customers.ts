@@ -101,7 +101,7 @@ export class RazorCustomer extends RazorResourceInterface implements CIRazorCust
     private _customerId: string;
 
     constructor(razor: Razorpay, customerId: string) {
-        super(razor, '/payments');
+        super(razor, '/customers');
         if (!customerId) {
             throw this.FIELD_MANDATORY_ERROR('Payment ID');
         }

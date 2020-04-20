@@ -1,6 +1,6 @@
 {
     "name": "razorpay-typescript",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Unofficial TypeScript based Node.js SDK for Razorpay API.",
     "main": "dist/razorpay",
     "typings": "dist/razorpay",
