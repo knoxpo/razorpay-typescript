@@ -43,8 +43,11 @@ class Razorpay {
         if (authKey && !authKey.key_secret) {
             throw new Error('`key_secret` is mandatory');
         }
-        this._authKey.key_id = authKey.key_id;
-        this._authKey.key_secret = authKey.key_secret;
+        this._authKey = authKey;
+        this._config.authKey = authKey;
+        if (headers) {
+            this._config.headers = headers;
+        }
         this._api = new api_1.RazorAPI({
             hostUrl: 'https://api.razorpay.com/v1/',
             ua: `razorpay-node@${Razorpay.VERSION}`,

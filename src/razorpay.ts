@@ -53,7 +53,7 @@ interface IRazorSettlementQuery {
 
 
 class Razorpay {
-    
+
     private _config: IRazorpayConfig = {
         authKey: {
             key_id: '',
@@ -83,8 +83,12 @@ class Razorpay {
             throw new Error('`key_secret` is mandatory')
         }
 
-        this._authKey.key_id = authKey.key_id;
-        this._authKey.key_secret = authKey.key_secret;
+        this._authKey = authKey;
+        this._config.authKey = authKey;
+        if (headers) {
+            this._config.headers = headers;
+        }
+
 
         this._api = new RazorAPI({
             hostUrl: 'https://api.razorpay.com/v1/',
@@ -124,7 +128,7 @@ class Razorpay {
     get orders(): RazorOrders {
         return new RazorOrders(this);
     }
-    
+
     get payments(): RazorPayments {
         return new RazorPayments(this);
     }

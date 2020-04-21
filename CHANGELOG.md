@@ -1,6 +1,12 @@
 # Changelog
 
-## 1.0.4 - 2020-04-21
+## 1.0.6 - 2020-04-21
+  - [Bug] Build issue resolved
+
+## 1.0.5 - 2020-04-21 [Bad Build]
+  - [Bug] Fixed `Razorpay` instance to get `config`
+
+## 1.0.4 - 2020-04-21 [Bad Build]
   - [Bug] Corrected resourceUrl in `RazorCustomer`
 
 ## 1.0.3 - 2020-04-18

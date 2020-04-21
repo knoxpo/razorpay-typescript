@@ -24,7 +24,7 @@ export interface IRazorAddress {
     city: string;
     state?: string;
     country: string;
-    primary?: boolean;
+    primary?: 0 | 1;
 }
 
 export interface IRazorAddressId extends IRazorAddress {
@@ -103,7 +103,7 @@ export class RazorCustomer extends RazorResourceInterface implements CIRazorCust
     constructor(razor: Razorpay, customerId: string) {
         super(razor, '/customers');
         if (!customerId) {
-            throw this.FIELD_MANDATORY_ERROR('Payment ID');
+            throw this.FIELD_MANDATORY_ERROR('Customer ID');
         }
         this._customerId = customerId;
     }
@@ -118,8 +118,9 @@ export class RazorCustomer extends RazorResourceInterface implements CIRazorCust
     */
     createAddress(params: IRazorAddress): Promise<IRazorAddressId> {
         const data = params;
-        data.primary = true;
-
+        if(data.primary !== undefined && data.primary !== null) {
+            data.primary = data.primary ? 1 : 0;
+        } 
         return this.api.post({
             url: `${this.resourceUrl}/${this._customerId}/addresses`,
             data

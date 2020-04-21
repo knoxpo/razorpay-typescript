@@ -63,7 +63,7 @@ rzp.customers.create({
     // error
 })
 
-rzp.customers.edit('cust_6fpspJYDovP0Tg', {
+rzp.customers.customer('cust_6fpspJYDovP0Tg').edit({
     name: 'selvagsz',
     email: 'test@razorpay.com',
     contact: '987654321'
@@ -81,21 +81,21 @@ rzp.customers.fetch('cust_6fpspJYDovP0Tg').then((data) => {
     // error
 })
 
-rzp.customers.fetchTokens('cust_6fpspJYDovP0Tg').then((data) => {
+rzp.customers.customer('cust_6fpspJYDovP0Tg').fetchAllTokens().then((data) => {
     console.log(data)
 }).catch((error) => {
     // error
     console.log(error)
 })
 
-rzp.customers.fetchToken('cust_6fpspJYDovP0Tg', 'tkn_YDovP0Tg6fpsp').then((data) => {
+rzp.customers.customer('cust_6fpspJYDovP0Tg').fetchToken('tkn_YDovP0Tg6fpsp').then((data) => {
     console.log(data)
 }).catch((error) => {
     // error
     console.log(error)
 })
 
-rzp.customers.deleteToken('cust_6fpspJYDovP0Tg', 'tkn_YDovP0Tg6fpsp').then((data) => {
+rzp.customers.customer('cust_6fpspJYDovP0Tg').deleteToken('tkn_YDovP0Tg6fpsp').then((data) => {
     console.log(data)
 }).catch((error) => {
     console.log(error)

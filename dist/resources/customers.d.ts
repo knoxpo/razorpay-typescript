@@ -22,7 +22,7 @@ export interface IRazorAddress {
     city: string;
     state?: string;
     country: string;
-    primary?: boolean;
+    primary?: 0 | 1;
 }
 export interface IRazorAddressId extends IRazorAddress {
     id: string;

@@ -48,9 +48,9 @@ class RazorCustomers extends interface_1.RazorResourceInterface {
 exports.RazorCustomers = RazorCustomers;
 class RazorCustomer extends interface_1.RazorResourceInterface {
     constructor(razor, customerId) {
-        super(razor, '/payments');
+        super(razor, '/customers');
         if (!customerId) {
-            throw this.FIELD_MANDATORY_ERROR('Payment ID');
+            throw this.FIELD_MANDATORY_ERROR('Customer ID');
         }
         this._customerId = customerId;
     }
@@ -64,7 +64,9 @@ class RazorCustomer extends interface_1.RazorResourceInterface {
     */
     createAddress(params) {
         const data = params;
-        data.primary = true;
+        if (data.primary !== undefined && data.primary !== null) {
+            data.primary = data.primary ? 1 : 0;
+        }
         return this.api.post({
             url: `${this.resourceUrl}/${this._customerId}/addresses`,
             data
