@@ -17,6 +17,8 @@ export interface IRazorSubscription {
     current_end?: number;
     ended_at?: number;
     charge_at?: number;
+    remaining_count?: number;
+    schedule_change_at?: 'now' | 'cycle_end';
     auth_attempts?: number;
 }
 

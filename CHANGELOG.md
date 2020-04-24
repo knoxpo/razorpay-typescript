@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.7 - 2020-04-25
+  - [Added] `remaining_count` & `schedule_change_at` to IRazorSubscription interface.
+
 ## 1.0.6 - 2020-04-21
   - [Bug] Build issue resolved
 

@@ -69,33 +69,6 @@ instance.payments
     // handle error
   });
 ```
-
-## Supported Resources
-
-- [Payments](https://github.com/razorpay/razorpay-node/wiki#payments)
-
-- [Refunds](https://github.com/razorpay/razorpay-node/wiki#refunds)
-
-- [Orders](https://github.com/razorpay/razorpay-node/wiki#orders)
-
-- [Customers](https://github.com/razorpay/razorpay-node/wiki#customers)
-
-- [Transfers](https://github.com/razorpay/razorpay-node/wiki#transfers)
-
-- [Virtual Accounts](https://github.com/razorpay/razorpay-node/wiki#virtual-accounts)
-
-- [Invoices](https://github.com/razorpay/razorpay-node/wiki#invoices)
-
-- [Plans](https://github.com/razorpay/razorpay-node/wiki#plans)
-
-- [Subscriptions](https://github.com/razorpay/razorpay-node/wiki#subscriptions)
-
-- [Addons](https://github.com/razorpay/razorpay-node/wiki#addons)
-
-- [Webhooks](https://github.com/razorpay/razorpay-node/wiki#webhooks)
-
-- [Partner Auth](https://github.com/razorpay/razorpay-node/wiki#partner-auth)
-
 ---
 
 ## Development
@@ -104,10 +77,10 @@ instance.payments
 npm install
 ```
 
-## Testing
+## Build
 
 ```bash
-npm test
+npm run build
 ```
 
 ## Release
