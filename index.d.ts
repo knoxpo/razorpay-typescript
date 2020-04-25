@@ -6,6 +6,7 @@ export {
     IRazorPaymentQuery,
     IRazorSettlementQuery,
     IRazorRouteQuery,
+    IRazorInvoiceQuery,
     IRazorpayConfig,
     IRazorpayAuthKey,
     RazorSubscriptions,
@@ -18,4 +19,6 @@ export {
     RazorRefunds,
     RazorRoutes,
     RazorVirtualAccounts,
+    RazorInvoices,
+    RazorItems,
 } from './dist/razorpay';

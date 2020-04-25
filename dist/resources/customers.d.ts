@@ -2,8 +2,9 @@ import { Razorpay } from "../razorpay";
 import { RazorResourceInterface } from "./util/interface";
 export interface IRazorCustomer {
     name: string;
-    email?: string;
-    contact?: string;
+    email?: string | null;
+    contact?: string | null;
+    gstin?: string | null;
     fail_existing?: "0" | "1";
     notes?: {
         [key: string]: string;
@@ -12,7 +13,6 @@ export interface IRazorCustomer {
 export interface IRazorCustomerId extends IRazorCustomer {
     id: string;
     created_at: number;
-    gstin: string;
 }
 export interface IRazorAddress {
     type: "billing_address" | "shipping_address";

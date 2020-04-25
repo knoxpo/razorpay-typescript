@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.8 - 2020-04-25
+  - [Added] `RazorItem` & `RazorInvoice` to `Razorpay` interface.
+
 ## 1.0.7 - 2020-04-25
   - [Added] `remaining_count` & `schedule_change_at` to IRazorSubscription interface.
 

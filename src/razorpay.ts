@@ -9,6 +9,8 @@ import { RazorRefunds } from './resources/refunds';
 import { RazorRoutes } from './resources/routes';
 import { RazorVirtualAccounts } from './resources/virtual-accounts';
 import { IMap } from './helper';
+import { RazorItems } from './resources/items';
+import { RazorInvoices } from './resources/invoices';
 const pkg = require('../package.json');
 
 interface IRazorpayAuthKey {
@@ -43,6 +45,13 @@ interface IRazorPaymentQuery extends IRazorQuery {
 
 interface IRazorRouteQuery extends IRazorQuery {
     payment_id?: string;
+}
+
+interface IRazorInvoiceQuery extends IRazorQuery {
+    type?: string;
+    payment_id?: string;
+    receipt?: string;
+    customer_id?: string;
 }
 
 interface IRazorSettlementQuery {
@@ -117,6 +126,14 @@ class Razorpay {
         return new RazorCustomers(this);
     }
 
+    get items(): RazorItems {
+        return new RazorItems(this);
+    }
+
+    get invoices(): RazorInvoices {
+        return new RazorInvoices(this);
+    }
+
     get plans(): RazorPlans {
         return new RazorPlans(this);
     }
@@ -159,6 +176,7 @@ export {
     IRazorPaymentQuery,
     IRazorSettlementQuery,
     IRazorRouteQuery,
+    IRazorInvoiceQuery,
     IRazorpayConfig,
     IRazorpayAuthKey,
     RazorSubscriptions,
@@ -171,4 +189,6 @@ export {
     RazorRefunds,
     RazorRoutes,
     RazorVirtualAccounts,
+    RazorInvoices,
+    RazorItems,
 };

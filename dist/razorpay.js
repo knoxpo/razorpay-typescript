@@ -20,6 +20,10 @@ const routes_1 = require("./resources/routes");
 exports.RazorRoutes = routes_1.RazorRoutes;
 const virtual_accounts_1 = require("./resources/virtual-accounts");
 exports.RazorVirtualAccounts = virtual_accounts_1.RazorVirtualAccounts;
+const items_1 = require("./resources/items");
+exports.RazorItems = items_1.RazorItems;
+const invoices_1 = require("./resources/invoices");
+exports.RazorInvoices = invoices_1.RazorInvoices;
 const pkg = require('../package.json');
 class Razorpay {
     constructor(config) {
@@ -69,6 +73,12 @@ class Razorpay {
     }
     get customers() {
         return new customers_1.RazorCustomers(this);
+    }
+    get items() {
+        return new items_1.RazorItems(this);
+    }
+    get invoices() {
+        return new invoices_1.RazorInvoices(this);
     }
     get plans() {
         return new plans_1.RazorPlans(this);

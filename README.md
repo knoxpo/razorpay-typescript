@@ -71,6 +71,11 @@ instance.payments
 ```
 ---
 
+## TODO
+ 1. Add detailed documentation to ease implementation curve.
+ 2. Further simplification of the data interfaces and introduce a failure response interface.
+ 3. Improve validation for params required and ignore which are params not.
+
 ## Development
 
 ```bash
