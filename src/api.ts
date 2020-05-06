@@ -1,4 +1,3 @@
-import request = require('request');
 import * as rp from 'request-promise';
 import { isNonNullObject, IMap } from './helper';
 
@@ -12,7 +11,7 @@ export class RazorAPI {
         "X-Razorpay-Account": ""
     };
 
-    private rq: request.RequestAPI<rp.RequestPromise<any>, rp.RequestPromiseOptions, request.RequiredUriUrl>;
+    private rq: rp.RequestPromiseAPI<any>;
     private _options: IMap<any>;
 
     constructor(options: IMap<any>) {

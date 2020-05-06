@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.11 - 2020-05-06
+  - [Remove] removed `request` dependency.
+
 ## 1.0.10 - 2020-05-06
   - [Bug] Fixed minor `RazorPayment` & `RazorInvoice` interface bugs.
   - [Added] `RazorWebhook` interface for easy Webhook event handling.
