@@ -5,8 +5,8 @@ import { IRazorRefundId, IRazorRefund } from "./refunds";
 import { IRazorTransfer, IRazorTransferId } from "./routes";
 import { IRazorBankTransferId, IRazorUpiTransferId } from "./virtual-accounts";
 export interface IRazorPayment {
-    entity?: string;
-    amount: string;
+    entity?: 'payment';
+    amount: number;
     currency: string;
     base_amount?: string;
     base_currency?: string;
@@ -23,6 +23,13 @@ export interface IRazorPayment {
     notes?: {
         [key: string]: string;
     };
+    invoice_id?: string | null;
+    card_id?: string | null;
+    bank?: string | null;
+    wallet?: string | null;
+    vpa?: string | null;
+    customer_id?: string | null;
+    token_id?: string | null;
 }
 export interface IRazorPaymentId extends IRazorPayment {
     id: string;

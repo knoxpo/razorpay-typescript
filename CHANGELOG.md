@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.10 - 2020-05-06
+  - [Bug] Fixed minor `RazorPayment` & `RazorInvoice` interface bugs.
+  - [Added] `RazorWebhook` interface for easy Webhook event handling.
+
+## 1.0.9 - 2020-04-25
+  - [Bug] Build issue resolved
+
 ## 1.0.8 - 2020-04-25
   - [Added] `RazorItem` & `RazorInvoice` to `Razorpay` interface.
 

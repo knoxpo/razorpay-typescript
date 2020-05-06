@@ -4,8 +4,9 @@ export interface IRazorSubscription {
     plan_id: string;
     customer_id?: string;
     total_count: number;
-    customer_notify: 0 | 1;
+    customer_notify: 0 | 1 | boolean;
     start_at?: number;
+    end_at?: number;
     quantity?: number;
     notes?: {
         [key: string]: string;
@@ -18,6 +19,7 @@ export interface IRazorSubscription {
     ended_at?: number;
     charge_at?: number;
     remaining_count?: number;
+    has_scheduled_changes?: 0 | 1 | boolean;
     schedule_change_at?: 'now' | 'cycle_end';
     auth_attempts?: number;
 }
@@ -26,8 +28,8 @@ export interface IRazorUpdateSubscription {
     quantity?: number;
     remaining_count?: number;
     start_at?: number;
-    schedule_change_at?: number;
-    customer_notify?: 0 | 1;
+    schedule_change_at?: 'now' | 'cycle_end';
+    customer_notify?: 0 | 1 | boolean;
 }
 export interface IRazorSubscriptionId extends IRazorSubscription {
     id: string;
@@ -38,7 +40,7 @@ export interface IRazorSubscriptionAddOn {
         amount: number;
         currency: string;
         description: string;
-        active: boolean;
+        active: 0 | 1 | boolean;
     };
     quantity: number;
     subscription_id: string;

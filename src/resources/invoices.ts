@@ -107,7 +107,7 @@ export interface CIRazorInvoices {
     fetchAll(query?: IRazorInvoiceQuery): Promise<{
         entity: 'invoice';
         count: number;
-        invoices: IRazorInvoiceId[];
+        items: IRazorInvoiceId[];
     }>;
     fetch(invoiceId: string): Promise<IRazorInvoiceId>;
     cancel(invoiceId: string): Promise<IRazorInvoiceId>;
@@ -163,7 +163,7 @@ export class RazorInvoices extends RazorResourceInterface implements CIRazorInvo
     *
     * @return {Promise}
     */
-    fetchAll(query: IRazorInvoiceQuery = {}): Promise<{ entity: 'invoice'; count: number; invoices: IRazorInvoiceId[]; }> {
+    fetchAll(query: IRazorInvoiceQuery = {}): Promise<{ entity: 'invoice'; count: number; items: IRazorInvoiceId[]; }> {
         let { from, to, count, skip } = query;
 
         if (from) {

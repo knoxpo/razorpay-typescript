@@ -1,12 +1,12 @@
 {
     "name": "razorpay-typescript",
-    "version": "1.0.8",
+    "version": "1.0.10",
     "description": "Unofficial TypeScript based Node.js SDK for Razorpay API.",
     "main": "dist/razorpay",
     "typings": "dist/razorpay",
     "scripts": {
         "lint": "tslint --project tsconfig.json",
-        "build": "tsc",
+        "build": "npm run lint && tsc",
         "serve": "npm run build"
     },
     "authors": [

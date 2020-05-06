@@ -17,6 +17,46 @@ npm i razorpay-typescript
 
 Documentation of Razorpay's API and their usage is available at <https://docs.razorpay.com>
 
+### All New Razorpay Webhook Handler
+Introducing `RazorWebhook`, a wrapper class for simplifying Webhooks actions for Razorpay Webhook Payload. You can now focus more on your core logic than managing event types.
+```ts
+// --------------------
+// Webhooks
+// --------------------
+
+const razorpayPayload: IRazorWebHookPayload = {
+  "entity":"event",
+  "account_id":"acc_BFQ7uQEaa7j2z7",
+  "event":"subscription.activated",
+  "contains":[
+    "subscription"
+  ],
+  "payload":{
+    "subscription":{
+      "entity":{
+        ...Your payload details ...
+      }
+    }
+  },
+  "created_at":1567690383
+};
+const wh: RazorWebhook = new RazorWebhook(razorpayPayload);
+
+
+/// Setup your custom handler actions
+wh.handler.subscriptionActivated = (pl) => {
+  /// ----- Your logic code.
+  return Promise.resolve();
+};
+
+wh.handler.subscriptionUpdated = (pl) => {
+  /// ----- Your logic code.
+  return Promise.resolve();
+};
+
+const execute: Promise<any> = await wh.execute();
+```
+
 ### Basic Usage
 
 Instantiate the razorpay instance with `key_id` & `key_secret`. You can obtain the keys from the dashboard app ([https://dashboard.razorpay.com/#/app/keys](https://dashboard.razorpay.com/#/app/keys))
