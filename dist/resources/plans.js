@@ -15,33 +15,33 @@ const interface_1 = require("./util/interface");
 const helper_1 = require("../helper");
 class RazorPlans extends interface_1.RazorResourceInterface {
     constructor(razor) {
-        super(razor, '/plans');
+        super(razor, "/plans");
     }
     get instance() {
         return new RazorPlans(this.services);
     }
     /**
-    * Creates a plan
-    *
-    * @param {Object} params
-    *
-    * @return {Promise}
-    */
+     * Creates a plan
+     *
+     * @param {Object} params
+     *
+     * @return {Promise}
+     */
     create(params) {
         const { notes } = params, rest = __rest(params, ["notes"]);
         const data = Object.assign(rest, helper_1.normalizeNotes(notes));
         return this.api.post({
             url: this.resourceUrl,
-            data
+            data,
         });
     }
     /**
-    * Get all Plans
-    *
-    * @param {Object} params
-    *
-    * @return {Promise}
-    */
+     * Get all Plans
+     *
+     * @param {Object} params
+     *
+     * @return {Promise}
+     */
     fetchAll(query = {}) {
         let { from, to, count, skip } = query;
         if (from) {
@@ -57,22 +57,22 @@ class RazorPlans extends interface_1.RazorResourceInterface {
             data: Object.assign(Object.assign({}, query), { from,
                 to,
                 count,
-                skip })
+                skip }),
         });
     }
     /**
-    * Fetches a plan given Plan ID
-    *
-    * @param {String} planId
-    *
-    * @return {Promise}
-    */
+     * Fetches a plan given Plan ID
+     *
+     * @param {String} planId
+     *
+     * @return {Promise}
+     */
     fetch(planId) {
         if (!planId) {
             return Promise.reject(this.MISSING_ID_ERROR);
         }
         return this.api.get({
-            url: `${this.resourceUrl}/${planId}`
+            url: `${this.resourceUrl}/${planId}`,
         });
     }
 }

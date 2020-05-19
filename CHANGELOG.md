@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.12 - 2020-05-19
+  - [Update] Updated `RarozPlan` interface.
+
 ## 1.0.11 - 2020-05-06
   - [Remove] removed `request` dependency.
 
